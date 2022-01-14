@@ -4,11 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 )
 
 // AvailabilityRequest The structure of the request will be made to the availability endpoint.
 type AvailabilityRequest struct {
-	Credentials            Credentials     `json:"credentials"`
+	Credentials            *Credentials    `json:"credentials"`
 	PeriodFrom             *NausysDateTime `json:"periodFrom,omitempty"`
 	PeriodTo               *NausysDateTime `json:"periodTo,omitempty"`
 	YachtIds               []int64         `json:"yachts,omitempty"`
@@ -26,6 +27,11 @@ type AvailabilityService service
 
 // GetAvailability returns availability for the specified yachts.
 func (as *AvailabilityService) GetAvailability(arq AvailabilityRequest) (ar []*FreeYachtList, err error) {
+	arq.Credentials = &Credentials{
+		Username: os.Getenv(APIUsernameContainer),
+		Password: os.Getenv(APIPasswordContainer),
+	}
+
 	var target = fmt.Sprintf("freeYachts")
 
 	body, err := json.Marshal(arq)

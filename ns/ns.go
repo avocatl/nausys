@@ -14,8 +14,10 @@ import (
 
 // Nausys API global constants.
 const (
-	BaseURL            = "http://ws.nausys.com/CBMS-external/rest/yachtReservation/v6/"
-	RequestContentType = "application/json"
+	BaseURL              = "http://ws.nausys.com/CBMS-external/rest/yachtReservation/v6/"
+	RequestContentType   = "application/json"
+	APIUsernameContainer = "NAUSYS_API_USERNAME"
+	APIPasswordContainer = "NAUSYS_API_PASSWORD"
 )
 
 // Nausys API global errors.
