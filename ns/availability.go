@@ -2,7 +2,6 @@ package ns
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"os"
 )
@@ -32,14 +31,12 @@ func (as *AvailabilityService) GetAvailability(arq AvailabilityRequest) (ar []*F
 		Password: os.Getenv(APIPasswordContainer),
 	}
 
-	var target = fmt.Sprintf("freeYachts")
-
 	body, err := json.Marshal(arq)
 	if err != nil {
 		return
 	}
 
-	req, err := as.client.NewAPIRequest(http.MethodPost, target, body)
+	req, err := as.client.NewAPIRequest(http.MethodPost, "freeYachts", body)
 	if err != nil {
 		return
 	}
