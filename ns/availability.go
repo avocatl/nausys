@@ -6,8 +6,8 @@ import (
 	"os"
 )
 
-// AvailabilityRequest The structure of the request will be made to the availability endpoint.
-type AvailabilityRequest struct {
+// FreeYachtRequest The structure of the request will be made to the availability endpoint.
+type FreeYachtRequest struct {
 	Credentials            *Credentials    `json:"credentials"`
 	PeriodFrom             *NausysDateTime `json:"periodFrom,omitempty"`
 	PeriodTo               *NausysDateTime `json:"periodTo,omitempty"`
@@ -25,7 +25,7 @@ type AvailabilityRequest struct {
 type AvailabilityService service
 
 // GetAvailability returns availability for the specified yachts.
-func (as *AvailabilityService) GetAvailability(arq AvailabilityRequest) (ar []*FreeYachtList, err error) {
+func (as *AvailabilityService) GetAvailability(arq FreeYachtRequest) (ar []*FreeYachtList, err error) {
 	arq.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
