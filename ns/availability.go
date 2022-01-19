@@ -25,7 +25,7 @@ type FreeYachtRequest struct {
 type AvailabilityService service
 
 // GetAvailability returns availability for the specified yachts.
-func (as *AvailabilityService) GetAvailability(arq FreeYachtRequest) (ar []*FreeYachtList, err error) {
+func (as *AvailabilityService) GetAvailability(arq *FreeYachtRequest) (ar []*FreeYachtList, err error) {
 	arq.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
