@@ -57,6 +57,7 @@ func NewClient(baseClient *http.Client) (nausys *Client, err error) {
 		runtime.GOARCH,
 		runtime.Version(),
 	}, ";")
+	nausys.Availability = (*AvailabilityService)(&nausys.common)
 	return
 }
 
