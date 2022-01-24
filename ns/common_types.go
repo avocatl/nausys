@@ -93,7 +93,7 @@ type NausysDateTime struct {
 // MarshalJSON overrides the default marshal action
 // for the Time struct. Returns date as YYYY-MM-DD HH:ii:ss formatted string.
 func (d *NausysDateTime) MarshalJSON() ([]byte, error) {
-	return json.Marshal(d.Time.Format("2006-01-02"))
+	return json.Marshal(d.Time.Format("02.01.2006"))
 }
 
 // UnmarshalJSON overrides the default unmarshal action
@@ -101,7 +101,7 @@ func (d *NausysDateTime) MarshalJSON() ([]byte, error) {
 func (d *NausysDateTime) UnmarshalJSON(b []byte) error {
 	s := string(b)
 	s = strings.Trim(s, "\"")
-	t, err := time.Parse("2006-01-02", s)
+	t, err := time.Parse("02.01.2006", s)
 	if err != nil {
 		return err
 	}
