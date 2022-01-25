@@ -2,6 +2,8 @@ package ns
 
 import (
 	"encoding/json"
+	"log"
+	"moul.io/http2curl"
 	"net/http"
 	"os"
 )
@@ -40,6 +42,9 @@ func (as *AvailabilityService) GetAvailability(arq *FreeYachtRequest) (ar []*Fre
 	if err != nil {
 		return
 	}
+
+	request, _ := http2curl.GetCurlCommand(req)
+	log.Println(request)
 
 	res, err := as.client.Do(req)
 	if err != nil {
