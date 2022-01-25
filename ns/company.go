@@ -14,8 +14,8 @@ type CompanyRequest struct {
 // CompanyService operates over company requests.
 type CompanyService service
 
-// Companies returns all companies.
-func (cs *CompanyService) Companies(crq *CompanyRequest) (clr *CompanyListResponse, err error) {
+// All returns all companies.
+func (cs *CompanyService) All(crq *CompanyRequest) (clr *CompanyListResponse, err error) {
 	crq.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),

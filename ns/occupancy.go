@@ -15,9 +15,9 @@ type OccupancyRequest struct {
 // OccupancyService operates over occupancy requests.
 type OccupancyService service
 
-// Occupancy Provides all reservations for specified company in specified
+// All Provides all reservations for specified company in specified
 // year regardless who made them.
-func (ocs *OccupancyService) Occupancy(orq *OccupancyRequest, companyID int64, year uint) (olr *OccupancyListResponse, err error) {
+func (ocs *OccupancyService) All(orq *OccupancyRequest, companyID int64, year uint) (olr *OccupancyListResponse, err error) {
 	orq.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
