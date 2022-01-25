@@ -8,7 +8,7 @@ import (
 
 // CompanyRequest The structure of the request will be made to the company endpoint.
 type CompanyRequest struct {
-	Credentials            *Credentials    `json:"credentials"`
+	Credentials *Credentials `json:"credentials"`
 }
 
 // CompanyService operates over company requests.
