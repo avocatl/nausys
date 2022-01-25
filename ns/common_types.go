@@ -70,7 +70,7 @@ type YachtReservationPriceInfo struct {
 	Currency                 string      `json:"currency,omitempty"`
 	DepositAmount            string      `json:"depositAmount,omitempty"`
 	DepositWhenInsuredAmount string      `json:"depositWhenInsuredAmount,omitempty"`
-	Discounts                []*Discount `json:"discount,omitempty"`
+	Discounts                []*Discount `json:"discounts,omitempty"`
 }
 
 // Discount describes the discount and type applied to an item.
