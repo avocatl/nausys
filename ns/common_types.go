@@ -44,31 +44,33 @@ type Period struct {
 
 // FreeYachtList is a list of all free yachts available from Nausys
 type FreeYachtList struct {
-	Status       string                    `json:"status,omitempty"`
-	ErrorCode    int                       `json:"errorCode,omitempty"`
-	PeriodFrom   *NausysDateTime           `json:"periodFrom,omitempty"`
-	PeriodTo     *NausysDateTime           `json:"periodTo,omitempty"`
-	FreeYachts   []FreeYacht               `json:"freeYachts,omitempty"`
-	Price        YachtReservationPriceInfo `json:"price,omitempty"`
-	PaymentPlans PaymentPlan               `json:"paymentPlans,omitempty"`
+	Status       string          `json:"status,omitempty"`
+	ErrorCode    int             `json:"errorCode,omitempty"`
+	PeriodFrom   *NausysDateTime `json:"periodFrom,omitempty"`
+	PeriodTo     *NausysDateTime `json:"periodTo,omitempty"`
+	FreeYachts   []FreeYacht     `json:"freeYachts,omitempty"`
+	PaymentPlans PaymentPlan     `json:"paymentPlans,omitempty"`
 }
 
 // FreeYacht is a free yacht object with timeframe of which it is free and locations.
 type FreeYacht struct {
-	YachtId        int64           `json:"yachtId,omitempty"`
-	PeriodFrom     *NausysDateTime `json:"periodFrom,omitempty"`
-	PeriodTo       *NausysDateTime `json:"periodTo,omitempty"`
-	LocationFromId int64           `json:"locationFromId,omitempty"`
-	LocationToId   int64           `json:"locationToId,omitempty"`
+	YachtId        int64                     `json:"yachtId,omitempty"`
+	PeriodFrom     *NausysDateTime           `json:"periodFrom,omitempty"`
+	PeriodTo       *NausysDateTime           `json:"periodTo,omitempty"`
+	Price          YachtReservationPriceInfo `json:"price,omitempty"`
+	LocationFromId int64                     `json:"locationFromId,omitempty"`
+	LocationToId   int64                     `json:"locationToId,omitempty"`
 }
 
 // YachtReservationPriceInfo contains the information on the reservation price of a yacht including discounts
 // and currency.
 type YachtReservationPriceInfo struct {
-	PriceListPrice string      `json:"priceListPrice,omitempty"`
-	ClientPrice    string      `json:"clientPrice,omitempty"`
-	Currency       string      `json:"currency,omitempty"`
-	Discounts      []*Discount `json:"discount,omitempty"`
+	PriceListPrice           string      `json:"priceListPrice,omitempty"`
+	ClientPrice              string      `json:"clientPrice,omitempty"`
+	Currency                 string      `json:"currency,omitempty"`
+	DepositAmount            string      `json:"depositAmount,omitempty"`
+	DepositWhenInsuredAmount string      `json:"depositWhenInsuredAmount,omitempty"`
+	Discounts                []*Discount `json:"discount,omitempty"`
 }
 
 // Discount describes the discount and type applied to an item.
