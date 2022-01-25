@@ -95,6 +95,7 @@ type CompanyListResponse struct {
 
 // Company is a company object with full charter company information.
 type Company struct {
+	ID           int64         `json:"id,omitempty"`
 	CountryID    int64         `json:"countryId,omitempty"`
 	Name         string        `json:"name,omitempty"`
 	Address      string        `json:"address,omitempty"`
