@@ -31,12 +31,7 @@ func (as *AvailabilityService) GetAvailability(arq *FreeYachtRequest) (ar []*Fre
 		Password: os.Getenv(APIPasswordContainer),
 	}
 
-	body, err := json.Marshal(arq)
-	if err != nil {
-		return
-	}
-
-	req, err := as.client.NewAPIRequest(http.MethodPost, "freeYachts", body)
+	req, err := as.client.NewAPIRequest(http.MethodPost, "freeYachts", arq)
 	if err != nil {
 		return
 	}
