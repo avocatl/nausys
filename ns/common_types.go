@@ -119,6 +119,26 @@ type BankAccount struct {
 	Iban          string `json:"iban,omitempty"`
 }
 
+// OccupancyList is a list of all a company occupancy from Nausys.
+type OccupancyList struct {
+	CompanyId    int64         `json:"companyId,omitempty"`
+	Year         uint          `json:"year,omitempty"`
+	Reservations []Reservation `json:"reservations,omitempty"`
+}
+
+// Reservation is a reservation object used in occupancy.
+type Reservation struct {
+	ID              int64           `json:"id,omitempty"`
+	YachtID         int64           `json:"yachtId,omitempty"`
+	LocationFromID  int64           `json:"locationFromId,omitempty"`
+	LocationToID    int64           `json:"locationToId,omitempty"`
+	ReservationType string          `json:"reservationType,omitempty"`
+	PeriodFrom      *NausysDateTime `json:"periodFrom,omitempty"`
+	CheckInTime     *NausysDateTime `json:"checkInTime,omitempty"`
+	PeriodTo        *NausysDateTime `json:"periodTo,omitempty"`
+	CheckOutTime    *NausysDateTime `json:"checkOutTime,omitempty"`
+}
+
 // NausysDateTime allows to perform (un)marshal operations with JSON
 // on MMK's date time formatted response objects.
 type NausysDateTime struct {
