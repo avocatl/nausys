@@ -86,6 +86,39 @@ type PaymentPlan struct {
 	Percentage int             `json:"percentage,omitempty"`
 }
 
+// CompanyList is a list of all companies from Nausys.
+type CompanyList struct {
+	Status    string    `json:"status,omitempty"`
+	ErrorCode int       `json:"errorCode,omitempty"`
+	Company   []Company `json:"companies,omitempty"`
+}
+
+// Company is a company object with full charter company information.
+type Company struct {
+	CountryID    int64         `json:"countryId,omitempty"`
+	Name         string        `json:"name,omitempty"`
+	Address      string        `json:"address,omitempty"`
+	City         string        `json:"city,omitempty"`
+	Zip          string        `json:"zip,omitempty"`
+	Phone        string        `json:"phone,omitempty"`
+	Fax          string        `json:"fax,omitempty"`
+	Mobile       string        `json:"mobile,omitempty"`
+	Vatcode      string        `json:"vatcode,omitempty"`
+	Web          string        `json:"web,omitempty"`
+	Email        string        `json:"email,omitempty"`
+	Pac          bool          `json:"pac,omitempty"`
+	BankAccounts []BankAccount `json:"bankAccounts,omitempty"`
+}
+
+// BankAccount is a company bank account information.
+type BankAccount struct {
+	BankName      string `json:"bankName,omitempty"`
+	BankAddress   string `json:"bankAddress,omitempty"`
+	AccountNumber string `json:"accountNumber,omitempty"`
+	Swift         string `json:"swift,omitempty"`
+	Iban          string `json:"iban,omitempty"`
+}
+
 // NausysDateTime allows to perform (un)marshal operations with JSON
 // on MMK's date time formatted response objects.
 type NausysDateTime struct {
