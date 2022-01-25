@@ -86,6 +86,59 @@ type PaymentPlan struct {
 	Percentage int             `json:"percentage,omitempty"`
 }
 
+// CompanyListResponse is a list of all companies from Nausys.
+type CompanyListResponse struct {
+	Status    string    `json:"status,omitempty"`
+	ErrorCode int       `json:"errorCode,omitempty"`
+	Company   []Company `json:"companies,omitempty"`
+}
+
+// Company is a company object with full charter company information.
+type Company struct {
+	CountryID    int64         `json:"countryId,omitempty"`
+	Name         string        `json:"name,omitempty"`
+	Address      string        `json:"address,omitempty"`
+	City         string        `json:"city,omitempty"`
+	Zip          string        `json:"zip,omitempty"`
+	Phone        string        `json:"phone,omitempty"`
+	Fax          string        `json:"fax,omitempty"`
+	Mobile       string        `json:"mobile,omitempty"`
+	Vatcode      string        `json:"vatcode,omitempty"`
+	Web          string        `json:"web,omitempty"`
+	Email        string        `json:"email,omitempty"`
+	Pac          bool          `json:"pac,omitempty"`
+	BankAccounts []BankAccount `json:"bankAccounts,omitempty"`
+}
+
+// BankAccount is a company bank account information.
+type BankAccount struct {
+	BankName      string `json:"bankName,omitempty"`
+	BankAddress   string `json:"bankAddress,omitempty"`
+	AccountNumber string `json:"accountNumber,omitempty"`
+	Swift         string `json:"swift,omitempty"`
+	Iban          string `json:"iban,omitempty"`
+}
+
+// OccupancyListResponse is a list of all a company occupancy from Nausys.
+type OccupancyListResponse struct {
+	CompanyId    int64         `json:"companyId,omitempty"`
+	Year         uint          `json:"year,omitempty"`
+	Reservations []Reservation `json:"reservations,omitempty"`
+}
+
+// Reservation is a reservation object used in occupancy.
+type Reservation struct {
+	ID              int64           `json:"id,omitempty"`
+	YachtID         int64           `json:"yachtId,omitempty"`
+	LocationFromID  int64           `json:"locationFromId,omitempty"`
+	LocationToID    int64           `json:"locationToId,omitempty"`
+	ReservationType string          `json:"reservationType,omitempty"`
+	PeriodFrom      *NausysDateTime `json:"periodFrom,omitempty"`
+	CheckInTime     *NausysDateTime `json:"checkInTime,omitempty"`
+	PeriodTo        *NausysDateTime `json:"periodTo,omitempty"`
+	CheckOutTime    *NausysDateTime `json:"checkOutTime,omitempty"`
+}
+
 // NausysDateTime allows to perform (un)marshal operations with JSON
 // on MMK's date time formatted response objects.
 type NausysDateTime struct {
