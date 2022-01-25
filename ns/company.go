@@ -15,13 +15,13 @@ type CompanyRequest struct {
 type CompanyService service
 
 // Companies returns all companies.
-func (cs *CompanyService) Companies(arq *CompanyRequest) (cl []*CompanyList, err error) {
-	arq.Credentials = &Credentials{
+func (cs *CompanyService) Companies(crq *CompanyRequest) (clr []*CompanyListResponse, err error) {
+	crq.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
 	}
 
-	req, err := cs.client.NewAPIRequest(http.MethodPost, "charterCompanies", arq)
+	req, err := cs.client.NewAPIRequest(http.MethodPost, "charterCompanies", crq)
 	if err != nil {
 		return
 	}
@@ -31,7 +31,7 @@ func (cs *CompanyService) Companies(arq *CompanyRequest) (cl []*CompanyList, err
 		return
 	}
 
-	if err = json.Unmarshal(res.content, &cl); err != nil {
+	if err = json.Unmarshal(res.content, &clr); err != nil {
 		return
 	}
 

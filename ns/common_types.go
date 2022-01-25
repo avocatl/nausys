@@ -86,8 +86,8 @@ type PaymentPlan struct {
 	Percentage int             `json:"percentage,omitempty"`
 }
 
-// CompanyList is a list of all companies from Nausys.
-type CompanyList struct {
+// CompanyListResponse is a list of all companies from Nausys.
+type CompanyListResponse struct {
 	Status    string    `json:"status,omitempty"`
 	ErrorCode int       `json:"errorCode,omitempty"`
 	Company   []Company `json:"companies,omitempty"`
@@ -119,8 +119,8 @@ type BankAccount struct {
 	Iban          string `json:"iban,omitempty"`
 }
 
-// OccupancyList is a list of all a company occupancy from Nausys.
-type OccupancyList struct {
+// OccupancyListResponse is a list of all a company occupancy from Nausys.
+type OccupancyListResponse struct {
 	CompanyId    int64         `json:"companyId,omitempty"`
 	Year         uint          `json:"year,omitempty"`
 	Reservations []Reservation `json:"reservations,omitempty"`

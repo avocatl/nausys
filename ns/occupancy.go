@@ -17,13 +17,13 @@ type OccupancyService service
 
 // Occupancy Provides all reservations for specified company in specified
 // year regardless who made them.
-func (ocs *OccupancyService) Occupancy(arq *OccupancyRequest, companyID int64, year uint) (ol []*OccupancyList, err error) {
-	arq.Credentials = &Credentials{
+func (ocs *OccupancyService) Occupancy(orq *OccupancyRequest, companyID int64, year uint) (olr []*OccupancyListResponse, err error) {
+	orq.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
 	}
 
-	req, err := ocs.client.NewAPIRequest(http.MethodPost, fmt.Sprintf("occupancy/%d/%d", companyID, year), arq)
+	req, err := ocs.client.NewAPIRequest(http.MethodPost, fmt.Sprintf("occupancy/%d/%d", companyID, year), orq)
 	if err != nil {
 		return
 	}
@@ -33,7 +33,7 @@ func (ocs *OccupancyService) Occupancy(arq *OccupancyRequest, companyID int64, y
 		return
 	}
 
-	if err = json.Unmarshal(res.content, &ol); err != nil {
+	if err = json.Unmarshal(res.content, &olr); err != nil {
 		return
 	}
 
