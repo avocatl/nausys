@@ -32,6 +32,8 @@ type Client struct {
 	client       *http.Client
 	common       service // Reuse a single struct instead of allocating one for each service on the heap.
 	Availability *AvailabilityService
+	Occupancy    *OccupancyService
+	Company      *CompanyService
 }
 
 // NewClient returns a new Nausys HTTP API client.
@@ -58,6 +60,8 @@ func NewClient(baseClient *http.Client) (nausys *Client, err error) {
 		runtime.Version(),
 	}, ";")
 	nausys.Availability = (*AvailabilityService)(&nausys.common)
+	nausys.Occupancy = (*OccupancyService)(&nausys.common)
+	nausys.Company = (*CompanyService)(&nausys.common)
 	return
 }
 
