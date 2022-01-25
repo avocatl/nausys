@@ -8,7 +8,7 @@ import (
 
 type OffersService service
 
-func (osrv *OffersService) GetOffers(orq *FreeYachtRequest) (or []*FreeYachtList, err error) {
+func (osrv *OffersService) GetOffers(orq *FreeYachtRequest) (or []*FreeYachtListResponse, err error) {
 	orq.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
