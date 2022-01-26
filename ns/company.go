@@ -2,26 +2,24 @@ package ns
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"os"
 )
-
-// CompanyRequest The structure of the request will be made to the company endpoint.
-type CompanyRequest struct {
-	Credentials *Credentials `json:"credentials"`
-}
 
 // CompanyService operates over company requests.
 type CompanyService service
 
 // All returns all companies.
-func (cs *CompanyService) All(crq *CompanyRequest) (clr *CompanyListResponse, err error) {
-	crq.Credentials = &Credentials{
+func (cs *CompanyService) All() (clr *CompanyListResponse, err error) {
+	c := &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
 	}
 
-	req, err := cs.client.NewAPIRequest(http.MethodPost, "charterCompanies", crq)
+	target := fmt.Sprintf("%s/charterCompanies", CatalogueURL)
+
+	req, err := cs.client.NewAPIRequest(http.MethodPost, target, c)
 	if err != nil {
 		return
 	}
