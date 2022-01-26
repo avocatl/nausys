@@ -145,17 +145,17 @@ type YachtListResponse struct {
 	Status    string  `json:"status,omitempty"`
 	ErrorCode int     `json:"errorCode,omitempty"`
 	Yachts    []Yacht `json:"yachts,omitempty"`
-	YachtIds  []int64 `json:"yachtIds,omitempty"`
+	YachtIDs  []int64 `json:"yachtIds,omitempty"`
 }
 
 // Yacht describes a single yacht
 type Yacht struct {
 	ID                          int64            `json:"id,omitempty"`
 	Name                        string           `json:"name,omitempty"`
-	CompanyId                   int64            `json:"companyId,omitempty"`
-	BaseId                      int64            `json:"baseId,omitempty"`
-	LocationId                  int64            `json:"locationId,omitempty"`
-	YachtModelId                int64            `json:"yachtModelId,omitempty"`
+	CompanyID                   int64            `json:"companyId,omitempty"`
+	BaseID                      int64            `json:"baseId,omitempty"`
+	LocationID                  int64            `json:"locationId,omitempty"`
+	YachtModelID                int64            `json:"yachtModelId,omitempty"`
 	Draft                       float64          `json:"draft,omitempty"`
 	Cabins                      int              `json:"cabins,omitempty"`
 	CabinCrew                   int              `json:"cabinCrew,omitempty"`
@@ -167,10 +167,10 @@ type Yacht struct {
 	WcCrew                      int              `json:"wcCrew,omitempty"`
 	Engines                     int              `json:"engines,omitempty"`
 	EnginePower                 float64          `json:"enginePower,omitempty"`
-	SteeringTypeId              int64            `json:"steeringTypeId,omitempty"`
-	SailTypeId                  int64            `json:"sailTypeId,omitempty"`
+	SteeringTypeID              int64            `json:"steeringTypeId,omitempty"`
+	SailTypeID                  int64            `json:"sailTypeId,omitempty"`
 	SailRenewed                 int              `json:"sailRenewed,omitempty"`
-	GenoaTypeId                 int64            `json:"genoaTypeId,omitempty"`
+	GenoaTypeID                 int64            `json:"genoaTypeId,omitempty"`
 	GenoaRenewed                int              `json:"genoaRenewed,omitempty"`
 	StandardYachtEquipment      []YachtEquipment `json:"standardYachtEquipment,omitempty"`
 	Euminia                     Euminia          `json:"euminia,omitempty"`
@@ -183,7 +183,7 @@ type Yacht struct {
 	SeasonSpecificData          []YachtSeason    `json:"seasonSpecificData,omitempty"`
 	NeedsOptionApproval         bool             `json:"needsOptionApproval,omitempty"`
 	CanMakeBookingFixed         bool             `json:"canMakeBookingFixed,omitempty"`
-	FlagsId                     []int64          `json:"flagsId,omitempty"`
+	FlagsID                     []int64          `json:"flagsId,omitempty"`
 	CharterType                 string           `json:"charterType,omitempty"`
 	FuelTank                    int              `json:"fuelTank,omitempty"`
 	WaterTank                   int              `json:"waterTank,omitempty"`
@@ -191,7 +191,7 @@ type Yacht struct {
 	PropulsionType              string           `json:"propulsionType,omitempty"`
 	OneWayPeriods               []OneWayPeriod   `json:"oneWayPeriods,omitempty"`
 	NumberOfRudderBlades        int              `json:"numberOfRudderBlades,omitempty"`
-	EngineBuilderId             int64            `json:"engineBuilderId,omitempty"`
+	EngineBuilderID             int64            `json:"engineBuilderId,omitempty"`
 	HullColor                   string           `json:"hullColor,omitempty"`
 	ThirdPartyInsuranceAmount   float64          `json:"thirdPartyInsuranceAmount,omitempty"`
 	ThirdPartyInsuranceCurrency string           `json:"thirdPartyInsuranceCurrency,omitempty"`
@@ -202,7 +202,7 @@ type Yacht struct {
 type YachtEquipment struct {
 	ID          int64             `json:"id,omitempty"`
 	Quantity    int               `json:"quantity,omitempty"`
-	EquipmentId int64             `json:"equipmentId,omitempty"`
+	EquipmentID int64             `json:"equipmentId,omitempty"`
 	Highlight   bool              `json:"highlight,omitempty"`
 	Comment     InternationalText `json:"comment,omitempty"`
 }
@@ -220,9 +220,9 @@ type Euminia struct {
 
 // YachtSeason describes a season tied to a yacht with available equipment, services, prices and discounts for that season
 type YachtSeason struct {
-	SeasonId                 int64                      `json:"seasonId,omitempty"`
-	BaseId                   int64                      `json:"baseId,omitempty"`
-	LocationId               int64                      `json:"locationId,omitempty"`
+	SeasonID                 int64                      `json:"seasonId,omitempty"`
+	BaseID                   int64                      `json:"baseId,omitempty"`
+	LocationID               int64                      `json:"locationId,omitempty"`
 	AdditionalYachtEquipment []AdditionalYachtEquipment `json:"additionalYachtEquipment,omitempty"`
 	Services                 []YachtService             `json:"services,omitempty"`
 	Prices                   []YachtPrice               `json:"prices,omitempty"`
@@ -231,11 +231,11 @@ type YachtSeason struct {
 
 // OneWayPeriod describes the period it would take to travel one way
 type OneWayPeriod struct {
-	Id         int64          `json:"id,omitempty"`
+	ID         int64          `json:"id,omitempty"`
 	PeriodFrom NausysDateTime `json:"periodFrom,omitempty"`
 	PeriodTo   NausysDateTime `json:"periodTo,omitempty"`
-	BaseId     int64          `json:"baseId,omitempty"`
-	LocationId int64          `json:"locationId,omitempty"`
+	BaseID     int64          `json:"baseId,omitempty"`
+	LocationID int64          `json:"locationId,omitempty"`
 }
 
 // CheckInPeriod describes the minimum amount of days that a yacht can be booked and check in days
@@ -277,13 +277,13 @@ type InternationalText struct {
 
 // AdditionalYachtEquipment describes equipment that can be booked with a yacht
 type AdditionalYachtEquipment struct {
-	Id                        int64             `json:"id,omitempty"`
+	ID                        int64             `json:"id,omitempty"`
 	Quantity                  int               `json:"quantity,omitempty"`
 	Price                     string            `json:"price,omitempty"`
 	Currency                  string            `json:"currency,omitempty"`
-	EquipmentId               int64             `json:"equipmentId,omitempty"`
+	EquipmentID               int64             `json:"equipmentId,omitempty"`
 	Comment                   InternationalText `json:"comment,omitempty"`
-	PriceMeasureId            int64             `json:"priceMeasureId,omitempty"`
+	PriceMeasureID            int64             `json:"priceMeasureId,omitempty"`
 	CalculationType           string            `json:"calculationType,omitempty"`
 	Condition                 InternationalText `json:"condition,omitempty"`
 	Amount                    string            `json:"amount,omitempty"`
@@ -295,11 +295,11 @@ type AdditionalYachtEquipment struct {
 
 // YachtService describes a service used with a yacht
 type YachtService struct {
-	Id                        int64             `json:"id,omitempty"`
-	ServiceId                 int64             `json:"serviceId,omitempty"`
+	ID                        int64             `json:"id,omitempty"`
+	ServiceID                 int64             `json:"serviceId,omitempty"`
 	Price                     string            `json:"price,omitempty"`
 	Currency                  string            `json:"currency,omitempty"`
-	PriceMeasureId            int64             `json:"priceMeasureId,omitempty"`
+	PriceMeasureID            int64             `json:"priceMeasureId,omitempty"`
 	CalculationType           string            `json:"calculationType,omitempty"`
 	Description               InternationalText `json:"description,omitempty"`
 	Obligatory                bool              `json:"obligatory,omitempty"`
@@ -316,13 +316,13 @@ type YachtService struct {
 
 // YachtPrice describes a yacht price
 type YachtPrice struct {
-	Id         int64   `json:"id,omitempty"`
+	ID         int64   `json:"id,omitempty"`
 	DateFrom   string  `json:"dateFrom,omitempty"`
 	DateTo     string  `json:"dateTo,omitempty"`
 	Price      string  `json:"price,omitempty"`
 	Currency   string  `json:"currency,omitempty"`
 	Type       string  `json:"type,omitempty"`
-	LocationId []int64 `json:"locationId,omitempty"`
+	LocationID []int64 `json:"locationId,omitempty"`
 }
 
 // NausysDateTime allows to perform (un)marshal operations with JSON
