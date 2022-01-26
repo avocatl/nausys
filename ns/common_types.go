@@ -319,7 +319,7 @@ type YachtPrice struct {
 	ID         int64   `json:"id,omitempty"`
 	DateFrom   string  `json:"dateFrom,omitempty"`
 	DateTo     string  `json:"dateTo,omitempty"`
-	Price      string  `json:"price,omitempty"`
+	Price      float32 `json:"price,omitempty"`
 	Currency   string  `json:"currency,omitempty"`
 	Type       string  `json:"type,omitempty"`
 	LocationID []int64 `json:"locationId,omitempty"`
