@@ -38,25 +38,25 @@ type Credentials struct {
 
 // Period is a struct that defines a time interval.
 type Period struct {
-	PeriodFrom NausysDateTime `json:"periodFrom,omitempty"`
-	PeriodTo   NausysDateTime `json:"periodTo,omitempty"`
+	PeriodFrom *NausysDate `json:"periodFrom,omitempty"`
+	PeriodTo   *NausysDate `json:"periodTo,omitempty"`
 }
 
 // FreeYachtListResponse is a list of all free yachts available from Nausys
 type FreeYachtListResponse struct {
-	Status       string          `json:"status,omitempty"`
-	ErrorCode    int             `json:"errorCode,omitempty"`
-	PeriodFrom   *NausysDateTime `json:"periodFrom,omitempty"`
-	PeriodTo     *NausysDateTime `json:"periodTo,omitempty"`
-	FreeYachts   []FreeYacht     `json:"freeYachts,omitempty"`
-	PaymentPlans PaymentPlan     `json:"paymentPlans,omitempty"`
+	Status       string      `json:"status,omitempty"`
+	ErrorCode    int         `json:"errorCode,omitempty"`
+	PeriodFrom   *NausysDate `json:"periodFrom,omitempty"`
+	PeriodTo     *NausysDate `json:"periodTo,omitempty"`
+	FreeYachts   []FreeYacht `json:"freeYachts,omitempty"`
+	PaymentPlans PaymentPlan `json:"paymentPlans,omitempty"`
 }
 
 // FreeYacht is a free yacht object with timeframe of which it is free and locations.
 type FreeYacht struct {
 	YachtId        int64                     `json:"yachtId,omitempty"`
-	PeriodFrom     *NausysDateTime           `json:"periodFrom,omitempty"`
-	PeriodTo       *NausysDateTime           `json:"periodTo,omitempty"`
+	PeriodFrom     *NausysDate               `json:"periodFrom,omitempty"`
+	PeriodTo       *NausysDate               `json:"periodTo,omitempty"`
 	Price          YachtReservationPriceInfo `json:"price,omitempty"`
 	LocationFromId int64                     `json:"locationFromId,omitempty"`
 	LocationToId   int64                     `json:"locationToId,omitempty"`
@@ -82,8 +82,8 @@ type Discount struct {
 
 // PaymentPlan describes a payment plan that can be used for payment of a yacht reservation.
 type PaymentPlan struct {
-	Date       *NausysDateTime `json:"date,omitempty"`
-	Percentage int             `json:"percentage,omitempty"`
+	Date       *NausysDate `json:"date,omitempty"`
+	Percentage int         `json:"percentage,omitempty"`
 }
 
 // CompanyListResponse is a list of all companies from Nausys.
@@ -129,15 +129,15 @@ type OccupancyListResponse struct {
 
 // Reservation is a reservation object used in occupancy.
 type Reservation struct {
-	ID              int64           `json:"id,omitempty"`
-	YachtID         int64           `json:"yachtId,omitempty"`
-	LocationFromID  int64           `json:"locationFromId,omitempty"`
-	LocationToID    int64           `json:"locationToId,omitempty"`
-	ReservationType string          `json:"reservationType,omitempty"`
-	PeriodFrom      *NausysDateTime `json:"periodFrom,omitempty"`
-	CheckInTime     *NausysDateTime `json:"checkInTime,omitempty"`
-	PeriodTo        *NausysDateTime `json:"periodTo,omitempty"`
-	CheckOutTime    *NausysDateTime `json:"checkOutTime,omitempty"`
+	ID              int64       `json:"id,omitempty"`
+	YachtID         int64       `json:"yachtId,omitempty"`
+	LocationFromID  int64       `json:"locationFromId,omitempty"`
+	LocationToID    int64       `json:"locationToId,omitempty"`
+	ReservationType string      `json:"reservationType,omitempty"`
+	PeriodFrom      *NausysDate `json:"periodFrom,omitempty"`
+	CheckInTime     *NausysTime `json:"checkInTime,omitempty"`
+	PeriodTo        *NausysDate `json:"periodTo,omitempty"`
+	CheckOutTime    *NausysTime `json:"checkOutTime,omitempty"`
 }
 
 // YachtListResponse is a response that contains a list of yacht objects
@@ -231,32 +231,32 @@ type YachtSeason struct {
 
 // OneWayPeriod describes the period it would take to travel one way
 type OneWayPeriod struct {
-	ID         int64          `json:"id,omitempty"`
-	PeriodFrom NausysDateTime `json:"periodFrom,omitempty"`
-	PeriodTo   NausysDateTime `json:"periodTo,omitempty"`
-	BaseID     int64          `json:"baseId,omitempty"`
-	LocationID int64          `json:"locationId,omitempty"`
+	ID         int64       `json:"id,omitempty"`
+	PeriodFrom *NausysDate `json:"periodFrom,omitempty"`
+	PeriodTo   *NausysDate `json:"periodTo,omitempty"`
+	BaseID     int64       `json:"baseId,omitempty"`
+	LocationID int64       `json:"locationId,omitempty"`
 }
 
 // CheckInPeriod describes the minimum amount of days that a yacht can be booked and check in days
 type CheckInPeriod struct {
-	DateFrom                   NausysDateTime `json:"dateFrom,omitempty"`
-	DateTo                     NausysDateTime `json:"dateTo,omitempty"`
-	MinimalReservationDuration int            `json:"minimalReservationDuration,omitempty"`
-	CheckInMonday              bool           `json:"checkInMonday,omitempty"`
-	CheckInTuesday             bool           `json:"checkInTuesday,omitempty"`
-	CheckInWednesday           bool           `json:"checkInWednesday,omitempty"`
-	CheckInThursday            bool           `json:"checkInThursday,omitempty"`
-	CheckInFriday              bool           `json:"checkInFriday,omitempty"`
-	CheckInSaturday            bool           `json:"checkInSaturday,omitempty"`
-	CheckInSunday              bool           `json:"checkInSunday,omitempty"`
-	CheckOutMonday             bool           `json:"checkOutMonday,omitempty"`
-	CheckOutTuesday            bool           `json:"checkOutTuesday,omitempty"`
-	CheckOutWednesday          bool           `json:"checkOutWednesday,omitempty"`
-	CheckOutThursday           bool           `json:"checkOutThursday,omitempty"`
-	CheckOutFriday             bool           `json:"checkOutFriday,omitempty"`
-	CheckOutSaturday           bool           `json:"checkOutSaturday,omitempty"`
-	CheckOutSunday             bool           `json:"checkOutSunday,omitempty"`
+	DateFrom                   *NausysDate `json:"dateFrom,omitempty"`
+	DateTo                     *NausysDate `json:"dateTo,omitempty"`
+	MinimalReservationDuration int         `json:"minimalReservationDuration,omitempty"`
+	CheckInMonday              bool        `json:"checkInMonday,omitempty"`
+	CheckInTuesday             bool        `json:"checkInTuesday,omitempty"`
+	CheckInWednesday           bool        `json:"checkInWednesday,omitempty"`
+	CheckInThursday            bool        `json:"checkInThursday,omitempty"`
+	CheckInFriday              bool        `json:"checkInFriday,omitempty"`
+	CheckInSaturday            bool        `json:"checkInSaturday,omitempty"`
+	CheckInSunday              bool        `json:"checkInSunday,omitempty"`
+	CheckOutMonday             bool        `json:"checkOutMonday,omitempty"`
+	CheckOutTuesday            bool        `json:"checkOutTuesday,omitempty"`
+	CheckOutWednesday          bool        `json:"checkOutWednesday,omitempty"`
+	CheckOutThursday           bool        `json:"checkOutThursday,omitempty"`
+	CheckOutFriday             bool        `json:"checkOutFriday,omitempty"`
+	CheckOutSaturday           bool        `json:"checkOutSaturday,omitempty"`
+	CheckOutSunday             bool        `json:"checkOutSunday,omitempty"`
 }
 
 // InternationalText is a list of translations
@@ -325,21 +325,33 @@ type YachtPrice struct {
 	LocationID []int64 `json:"locationId,omitempty"`
 }
 
+// NausysDate allows to perform (un)marshal operations with JSON
+// on Nausys's date formatted response objects.
+type NausysDate struct {
+	time.Time
+}
+
 // NausysDateTime allows to perform (un)marshal operations with JSON
-// on MMK's date time formatted response objects.
+// on Nausys's date time formatted response objects.
 type NausysDateTime struct {
 	time.Time
 }
 
+// NausysTime allows to (un)marshalling operations with JSON on
+// Nausys's time formatted response objects.
+type NausysTime struct {
+	time.Time
+}
+
 // MarshalJSON overrides the default marshal action
-// for the Time struct. Returns date as YYYY-MM-DD HH:ii:ss formatted string.
-func (d *NausysDateTime) MarshalJSON() ([]byte, error) {
+// for the Time struct. Returns date as YYYY-MM-DD formatted string.
+func (d *NausysDate) MarshalJSON() ([]byte, error) {
 	return json.Marshal(d.Time.Format("02.01.2006"))
 }
 
 // UnmarshalJSON overrides the default unmarshal action
 // for the Time struct.
-func (d *NausysDateTime) UnmarshalJSON(b []byte) error {
+func (d *NausysDate) UnmarshalJSON(b []byte) error {
 	s := string(b)
 	s = strings.Trim(s, "\"")
 	t, err := time.Parse("02.01.2006", s)
@@ -347,5 +359,43 @@ func (d *NausysDateTime) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	d.Time = t
+	return nil
+}
+
+// MarshalJSON overrides the default marshal action
+// for the Time struct. Returns date as YYYY-MM-DD HH:ii:ss formatted string.
+func (dt *NausysDateTime) MarshalJSON() ([]byte, error) {
+	return json.Marshal(dt.Time.Format("02.01.2006 15:04"))
+}
+
+// UnmarshalJSON overrides the default unmarshal action
+// for the Time struct.
+func (dt *NausysDateTime) UnmarshalJSON(b []byte) error {
+	s := string(b)
+	s = strings.Trim(s, "\"")
+	t, err := time.Parse("02.01.2006 15:04", s)
+	if err != nil {
+		return err
+	}
+	dt.Time = t
+	return nil
+}
+
+// MarshalJSON overrides the default marshal action
+// for the Time struct. Returns date as YYYY-MM-DD HH:ii:ss formatted string.
+func (t *NausysTime) MarshalJSON() ([]byte, error) {
+	return json.Marshal(t.Time.Format("15:04:05"))
+}
+
+// UnmarshalJSON overrides the default unmarshal action
+// for the Time struct.
+func (t *NausysTime) UnmarshalJSON(b []byte) error {
+	s := string(b)
+	s = strings.Trim(s, "\"")
+	ti, err := time.Parse("15:04:05", s)
+	if err != nil {
+		return err
+	}
+	t.Time = ti
 	return nil
 }
