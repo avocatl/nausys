@@ -19,12 +19,7 @@ func (sys *YachtsService) Find(y int) (r YachtListResponse, err error) {
 
 	target := fmt.Sprintf("%s/yacht/%d", CatalogueURL, y)
 
-	body, err := json.Marshal(cred)
-	if err != nil {
-		return
-	}
-
-	req, err := sys.client.NewAPIRequest(http.MethodPost, target, body)
+	req, err := sys.client.NewAPIRequest(http.MethodPost, target, cred)
 	if err != nil {
 		return
 	}

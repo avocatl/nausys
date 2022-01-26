@@ -17,12 +17,7 @@ func (osrv *OffersService) GetOffers(orq *FreeYachtRequest) (or *FreeYachtListRe
 
 	target := fmt.Sprintf("%s/freeYachts", ReservationURL)
 
-	body, err := json.Marshal(orq)
-	if err != nil {
-		return
-	}
-
-	req, err := osrv.client.NewAPIRequest(http.MethodPost, target, body)
+	req, err := osrv.client.NewAPIRequest(http.MethodPost, target, orq)
 	if err != nil {
 		return
 	}
