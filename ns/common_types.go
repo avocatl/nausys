@@ -121,6 +121,7 @@ type BankAccount struct {
 
 // OccupancyListResponse is a list of all a company occupancy from Nausys.
 type OccupancyListResponse struct {
+	Status       string        `json:"status,omitempty"`
 	CompanyId    int64         `json:"companyId,omitempty"`
 	Year         uint          `json:"year,omitempty"`
 	Reservations []Reservation `json:"reservations,omitempty"`
