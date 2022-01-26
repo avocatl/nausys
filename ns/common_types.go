@@ -98,26 +98,25 @@ type Company struct {
 	ID           int64         `json:"id,omitempty"`
 	CountryID    int64         `json:"countryId,omitempty"`
 	Name         string        `json:"name,omitempty"`
+	CompanyName  string        `json:"companyName,omitempty"`
 	Address      string        `json:"address,omitempty"`
 	City         string        `json:"city,omitempty"`
 	Zip          string        `json:"zip,omitempty"`
 	Phone        string        `json:"phone,omitempty"`
-	Fax          string        `json:"fax,omitempty"`
 	Mobile       string        `json:"mobile,omitempty"`
 	Vatcode      string        `json:"vatcode,omitempty"`
 	Web          string        `json:"web,omitempty"`
 	Email        string        `json:"email,omitempty"`
-	Pac          bool          `json:"pac,omitempty"`
+	Pac          int           `json:"pac,omitempty"`
 	BankAccounts []BankAccount `json:"bankAccounts,omitempty"`
 }
 
 // BankAccount is a company bank account information.
 type BankAccount struct {
-	BankName      string `json:"bankName,omitempty"`
-	BankAddress   string `json:"bankAddress,omitempty"`
-	AccountNumber string `json:"accountNumber,omitempty"`
-	Swift         string `json:"swift,omitempty"`
-	Iban          string `json:"iban,omitempty"`
+	BankName    string `json:"bankName,omitempty"`
+	BankAddress string `json:"bankAddress,omitempty"`
+	Swift       string `json:"swift,omitempty"`
+	Iban        string `json:"iban,omitempty"`
 }
 
 // OccupancyListResponse is a list of all a company occupancy from Nausys.
