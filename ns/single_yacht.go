@@ -7,9 +7,11 @@ import (
 	"os"
 )
 
-type SingleYachtService service
+// YachtsService operates over company requests.
+type YachtsService service
 
-func (sys *SingleYachtService) GetYacht(y int) (r YachtListResponse, err error) {
+// GetYacht retrieves a yacht with the yacht ID.
+func (sys *YachtsService) GetYacht(y int) (r YachtListResponse, err error) {
 	cred := &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
