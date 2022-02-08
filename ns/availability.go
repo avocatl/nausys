@@ -9,17 +9,17 @@ import (
 
 // FreeYachtRequest The structure of the request will be made to the availability endpoint.
 type FreeYachtRequest struct {
-	Credentials            *Credentials    `json:"credentials"`
-	PeriodFrom             *NausysDateTime `json:"periodFrom,omitempty"`
-	PeriodTo               *NausysDateTime `json:"periodTo,omitempty"`
-	YachtIds               []int64         `json:"yachts,omitempty"`
-	PriceFrom              int             `json:"priceFrom,omitempty"`
-	PriceTo                int             `json:"priceTo,omitempty"`
-	OrderBy                int             `json:"orderby,omitempty"`
-	Direction              int             `json:"direction,omitempty"`
-	IgnoreAvailability     bool            `json:"ignoreAvailability,omitempty"`
-	Periods                []*Period       `json:"periods,omitempty"`
-	IncludeExtendedDataSet bool            `json:"includeExtendedDataSet,omitempty"`
+	Credentials            *Credentials `json:"credentials"`
+	PeriodFrom             *NausysDate  `json:"periodFrom,omitempty"`
+	PeriodTo               *NausysDate  `json:"periodTo,omitempty"`
+	YachtIds               []int64      `json:"yachts,omitempty"`
+	PriceFrom              int          `json:"priceFrom,omitempty"`
+	PriceTo                int          `json:"priceTo,omitempty"`
+	OrderBy                int          `json:"orderby,omitempty"`
+	Direction              int          `json:"direction,omitempty"`
+	IgnoreAvailability     bool         `json:"ignoreAvailability,omitempty"`
+	Periods                []*Period    `json:"periods,omitempty"`
+	IncludeExtendedDataSet bool         `json:"includeExtendedDataSet,omitempty"`
 }
 
 // AvailabilityService operates over availability requests.
