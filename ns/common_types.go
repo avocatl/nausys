@@ -75,9 +75,9 @@ type YachtReservationPriceInfo struct {
 
 // Discount describes the discount and type applied to an item.
 type Discount struct {
-	DiscountedItemId int64  `json:"discountedItemId,omitempty"`
-	Amount           string `json:"amount,omitempty"`
-	Type             string `json:"type,omitempty"`
+	DiscountedItemId int64   `json:"discountedItemId,omitempty"`
+	Amount           float32 `json:"amount,omitempty"`
+	Type             string  `json:"type,omitempty"`
 }
 
 // PaymentPlan describes a payment plan that can be used for payment of a yacht reservation.
