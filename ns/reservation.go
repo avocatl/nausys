@@ -46,7 +46,7 @@ type OptionBookingRequest struct {
 type ReservationService service
 
 // GetReservation gets a reservation using the reservation id.
-func (rsrv *ReservationService) GetReservation(rr *ReservationsRequest) (r *Reservation, err error) {
+func (rsrv *ReservationService) GetReservation(rr *ReservationsRequest) (r *ReservationInfo, err error) {
 	rr.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
@@ -72,7 +72,7 @@ func (rsrv *ReservationService) GetReservation(rr *ReservationsRequest) (r *Rese
 }
 
 // CreateInfo sends a request to create an info reservation.
-func (rsrv *ReservationService) CreateInfo(ir *InfoRequest) (r *Reservation, err error) {
+func (rsrv *ReservationService) CreateInfo(ir *InfoRequest) (r *ReservationInfo, err error) {
 	ir.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
