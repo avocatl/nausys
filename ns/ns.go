@@ -39,6 +39,7 @@ type Client struct {
 	Occupancy    *OccupancyService
 	Company      *CompanyService
 	Yacht        *YachtsService
+	Reservation  *ReservationService
 }
 
 // NewClient returns a new Nausys HTTP API client.
@@ -69,6 +70,7 @@ func NewClient(baseClient *http.Client) (nausys *Client, err error) {
 	nausys.Occupancy = (*OccupancyService)(&nausys.common)
 	nausys.Company = (*CompanyService)(&nausys.common)
 	nausys.Yacht = (*YachtsService)(&nausys.common)
+	nausys.Reservation = (*ReservationService)(&nausys.common)
 	return
 }
 
