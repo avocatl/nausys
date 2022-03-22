@@ -15,6 +15,7 @@ import (
 // Nausys API global constants.
 const (
 	BaseURL              = "http://ws.nausys.com/CBMS-external/rest/"
+	BookingURL           = "booking/v6"
 	CatalogueURL         = "catalogue/v6"
 	ReservationURL       = "yachtReservation/v6"
 	RequestContentType   = "application/json"

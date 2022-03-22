@@ -86,6 +86,17 @@ type PaymentPlan struct {
 	Percentage int         `json:"percentage,omitempty"`
 }
 
+// BookingPaymentPlan describes a payment plan that was created as part of a bookingd
+type BookingPaymentPlan struct {
+	ID                      int64           `json:"id,omitempty"`
+	Date                    *NausysDate     `json:"date,omitempty"`
+	Amount                  string          `json:"amount,omitempty"`
+	AmountPaymentCurrency   string          `json:"amountPaymentCurrency,omitempty"`
+	Paid                    bool            `json:"paid,omitempty"`
+	OnlinePaymentLink       string          `json:"onlinePaymentLink,omitempty"`
+	OnlinePaymentValidUTill *NausysDateTime `json:"onlinePaymentValidUTill,omitempty"`
+}
+
 // CompanyListResponse is a list of all companies from Nausys.
 type CompanyListResponse struct {
 	Status    string    `json:"status,omitempty"`
@@ -293,6 +304,15 @@ type AdditionalYachtEquipment struct {
 	MinimumPrice              string            `json:"minimumPrice,omitempty"`
 }
 
+// Payment describes a payment object
+type Payment struct {
+	ID                    int64  `json:"id,omitempty"`
+	Date                  string `json:"date,omitempty"`
+	Amount                string `json:"amount,omitempty"`
+	AmountPaymentCurrency string `json:"amountPaymentCurrency,omitempty"`
+	PaymentCurrency       string `json:"paymentCurrency,omitempty"`
+}
+
 // YachtService describes a service used with a yacht
 type YachtService struct {
 	ID                        int64             `json:"id,omitempty"`
@@ -314,7 +334,7 @@ type YachtService struct {
 	MinimumPrice              string            `json:"minimumPrice,omitempty"`
 }
 
-// YachtPrice describes a yacht price
+// YachtPrice describes a yacht price.
 type YachtPrice struct {
 	ID         int64   `json:"id,omitempty"`
 	DateFrom   string  `json:"dateFrom,omitempty"`
@@ -323,6 +343,60 @@ type YachtPrice struct {
 	Currency   string  `json:"currency,omitempty"`
 	Type       string  `json:"type,omitempty"`
 	LocationID []int64 `json:"locationId,omitempty"`
+}
+
+// ClientInfo describes a client object.
+type ClientInfo struct {
+	Company   bool   `json:"company,omitempty"`
+	VatNr     string `json:"vatNr,omitempty"`
+	Name      string `json:"name,omitempty"`
+	Surname   string `json:"surname,omitempty"`
+	Address   string `json:"address,omitempty"`
+	Zip       string `json:"zip,omitempty"`
+	City      string `json:"city,omitempty"`
+	CountryId int64  `json:"countryId,omitempty"`
+	Email     string `json:"email,omitempty"`
+	Phone     string `json:"phone,omitempty"`
+	Mobile    string `json:"mobile,omitempty"`
+	Skype     string `json:"skype,omitempty"`
+}
+
+type ReservationInfo struct {
+	ID                             int64                       `json:"id,omitempty"`
+	Uuid                           string                      `json:"uuid,omitempty"`
+	ReservationStatus              string                      `json:"reservationStatus,omitempty"`
+	WaitingForOption               bool                        `json:"waitingForOption,omitempty"`
+	YachtID                        int64                       `json:"yachtID,omitempty"`
+	BaseFromId                     int64                       `json:"baseFromId,omitempty"`
+	BaseToId                       int64                       `json:"baseToId,omitempty"`
+	LocationFromId                 int64                       `json:"locationFromId,omitempty"`
+	LocationToId                   int64                       `json:"locationToId,omitempty"`
+	PeriodFrom                     *NausysDateTime             `json:"periodFrom,omitempty"`
+	PeriodTo                       *NausysDateTime             `json:"periodTo,omitempty"`
+	OptionTill                     string                      `json:"optionTill,omitempty"`
+	Agency                         string                      `json:"agency,omitempty"`
+	AgencyVatID                    string                      `json:"agencyVATID,omitempty"`
+	Client                         *ClientInfo                 `json:"client,omitempty"`
+	Discounts                      []*Discount                 `json:"discounts,omitempty"`
+	AdditionalEquipment            []*AdditionalYachtEquipment `json:"additionalEquipment,omitempty"`
+	Services                       []*YachtsService            `json:"services,omitempty"`
+	PriceListPrice                 string                      `json:"priceListPrice,omitempty"`
+	AgencyPrice                    string                      `json:"agencyPrice,omitempty"`
+	ClientPrice                    string                      `json:"clientPrice,omitempty"`
+	Currency                       string                      `json:"currency,omitempty"`
+	PaymentCurrency                string                      `json:"paymentCurrency,omitempty"`
+	LocalizedFinalPrice            string                      `json:"localizedFinalPrice,omitempty"`
+	OnlinePaymentAmount            string                      `json:"onlinePaymentAmount,omitempty"`
+	Approved                       bool                        `json:"approved,omitempty"`
+	CrewListLink                   string                      `json:"crewlistlink,omitempty"`
+	CreatedDate                    string                      `json:"createdDate,omitempty"`
+	PaymentPlan                    []*PaymentPlan              `json:"paymentPlan,omitempty"`
+	Payments                       []*Payment                  `json:"payments,omitempty"`
+	UseDepositPayment              bool                        `json:"useDepositPayment,omitempty"`
+	NumberOfPayments               int                         `json:"numberOfPayments,omitempty"`
+	OwnerBooking                   bool                        `json:"ownerBooking,omitempty"`
+	AgencyAdditionalDiscountAmount string                      `json:"agencyAdditionalDiscountAmount,omitempty"`
+	AgencyClientFinalPrice         string                      `json:"agencyClientFinalPrice,omitempty"`
 }
 
 // NausysDate allows to perform (un)marshal operations with JSON
