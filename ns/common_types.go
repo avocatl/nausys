@@ -361,6 +361,14 @@ type ClientInfo struct {
 	Skype     string `json:"skype,omitempty"`
 }
 
+// ReservationsList is the response struct.
+type ReservationsList struct {
+	Status       string             `json:"status,omitempty"`
+	ErrorCode    int                `json:"errorCode,omitempty"`
+	Reservations []*ReservationInfo `json:"reservations,omitempty"`
+}
+
+// ReservationInfo defines all the information and types that a reservation will contain
 type ReservationInfo struct {
 	ID                             int64                       `json:"id,omitempty"`
 	Uuid                           string                      `json:"uuid,omitempty"`
