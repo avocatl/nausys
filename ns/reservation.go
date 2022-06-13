@@ -98,7 +98,7 @@ func (rsrv *ReservationService) CreateInfo(ir *InfoRequest) (r *ReservationInfo,
 }
 
 // CreateOption sends a request to create an option reservation.
-func (rsrv *ReservationService) CreateOption(obr *OptionBookingRequest) (r *Reservation, err error) {
+func (rsrv *ReservationService) CreateOption(obr *OptionBookingRequest) (r *ReservationInfo, err error) {
 	obr.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
@@ -124,7 +124,7 @@ func (rsrv *ReservationService) CreateOption(obr *OptionBookingRequest) (r *Rese
 }
 
 // CreateBooking sends a post request to create a booking reservation.
-func (rsrv *ReservationService) CreateBooking(obr *OptionBookingRequest) (r *Reservation, err error) {
+func (rsrv *ReservationService) CreateBooking(obr *OptionBookingRequest) (r *ReservationInfo, err error) {
 	obr.Credentials = &Credentials{
 		Username: os.Getenv(APIUsernameContainer),
 		Password: os.Getenv(APIPasswordContainer),
