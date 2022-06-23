@@ -11,7 +11,7 @@ import (
 type InfoRequest struct {
 	Credentials                    *Credentials `json:"credentials,omitempty"`
 	ClientInfo                     *ClientInfo  `json:"client,omitempty"`
-	YachtId                        int64        `json:"yachtId,omitempty"`
+	YachtId                        int64        `json:"yachtID,omitempty"`
 	PeriodFrom                     *NausysDate  `json:"periodFrom,omitempty"`
 	PeriodTo                       *NausysDate  `json:"periodTo,omitempty"`
 	Services                       []int64      `json:"services,omitempty"`
@@ -37,7 +37,7 @@ type ReservationsRequest struct {
 // OptionBookingRequest describes a request to create an option or a booking
 type OptionBookingRequest struct {
 	Credentials         *Credentials `json:"credentials,omitempty"`
-	ID                  int64        `json:"ID,omitempty"`
+	ID                  int64        `json:"id,omitempty"`
 	Uuid                string       `json:"uuid,omitempty"`
 	CreateWaitingOption bool         `json:"createWaitingOption,omitempty"`
 }
