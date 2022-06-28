@@ -42,6 +42,12 @@ type OptionBookingRequest struct {
 	CreateWaitingOption bool         `json:"createWaitingOption,omitempty"`
 }
 
+// ErrorResponse describes a Nausys error response
+type ErrorResponse struct {
+	ErrorCode int    `json:"errorCode,omitempty"`
+	Status    string `json:"status,omitempty"`
+}
+
 // ReservationService operates over reservation requests.
 type ReservationService service
 
@@ -60,6 +66,11 @@ func (rsrv *ReservationService) GetReservation(rr *ReservationsRequest) (r *Rese
 	}
 
 	res, err := rsrv.client.Do(req)
+	if err != nil {
+		return
+	}
+
+	err = checkForErrorResponse(res)
 	if err != nil {
 		return
 	}
@@ -90,6 +101,11 @@ func (rsrv *ReservationService) CreateInfo(ir *InfoRequest) (r *ReservationInfo,
 		return
 	}
 
+	err = checkForErrorResponse(res)
+	if err != nil {
+		return
+	}
+
 	if err = json.Unmarshal(res.content, &r); err != nil {
 		return
 	}
@@ -112,6 +128,11 @@ func (rsrv *ReservationService) CreateOption(obr *OptionBookingRequest) (r *Rese
 	}
 
 	res, err := rsrv.client.Do(req)
+	if err != nil {
+		return
+	}
+
+	err = checkForErrorResponse(res)
 	if err != nil {
 		return
 	}
@@ -142,9 +163,27 @@ func (rsrv *ReservationService) CreateBooking(obr *OptionBookingRequest) (r *Res
 		return
 	}
 
+	err = checkForErrorResponse(res)
+	if err != nil {
+		return
+	}
+
 	if err = json.Unmarshal(res.content, &r); err != nil {
 		return
 	}
 
 	return
+}
+
+func checkForErrorResponse(response *Response) error {
+	var errResp ErrorResponse
+	if err := json.Unmarshal(response.content, &errResp); err != nil {
+		return err
+	}
+
+	if errResp.ErrorCode != 0 {
+		return fmt.Errorf("invalid response from provider: %s (Code: %d)", errResp.Status, errResp.ErrorCode)
+	}
+
+	return nil
 }
