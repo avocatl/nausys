@@ -132,11 +132,6 @@ func (rsrv *ReservationService) CreateOption(obr *OptionBookingRequest) (r *Rese
 		return
 	}
 
-	err = checkForErrorResponse(res)
-	if err != nil {
-		return
-	}
-
 	if err = json.Unmarshal(res.content, &r); err != nil {
 		return
 	}
