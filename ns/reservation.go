@@ -11,7 +11,7 @@ import (
 type InfoRequest struct {
 	Credentials                    *Credentials `json:"credentials,omitempty"`
 	ClientInfo                     *ClientInfo  `json:"client,omitempty"`
-	YachtId                        int64        `json:"yachtID,omitempty"`
+	YachtID                        int64        `json:"yachtID,omitempty"`
 	PeriodFrom                     *NausysDate  `json:"periodFrom,omitempty"`
 	PeriodTo                       *NausysDate  `json:"periodTo,omitempty"`
 	Services                       []int64      `json:"services,omitempty"`
@@ -25,7 +25,7 @@ type InfoRequest struct {
 	AgencyClientDiscountAmountType string       `json:"agencyClientDiscountAmountType,omitempty"`
 }
 
-// ReservationsRequest describes a request to get reservations
+// ReservationsRequest describes a request to get reservations.
 type ReservationsRequest struct {
 	Credentials           *Credentials `json:"credentials,omitempty"`
 	PeriodFrom            *NausysDate  `json:"periodFrom,omitempty"`
@@ -34,15 +34,15 @@ type ReservationsRequest struct {
 	Reservations          []int64      `json:"reservations,omitempty"`
 }
 
-// OptionBookingRequest describes a request to create an option or a booking
+// OptionBookingRequest describes a request to create an option or a booking.
 type OptionBookingRequest struct {
 	Credentials         *Credentials `json:"credentials,omitempty"`
 	ID                  int64        `json:"id,omitempty"`
-	Uuid                string       `json:"uuid,omitempty"`
+	UUID                string       `json:"uuid,omitempty"`
 	CreateWaitingOption bool         `json:"createWaitingOption,omitempty"`
 }
 
-// ErrorResponse describes a Nausys error response
+// ErrorResponse describes a Nausys error response.
 type ErrorResponse struct {
 	ErrorCode int    `json:"errorCode,omitempty"`
 	Status    string `json:"status,omitempty"`

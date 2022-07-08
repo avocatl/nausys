@@ -42,7 +42,7 @@ type Period struct {
 	PeriodTo   *NausysDate `json:"periodTo,omitempty"`
 }
 
-// FreeYachtListResponse is a list of all free yachts available from Nausys
+// FreeYachtListResponse is a list of all free yachts available from Nausys.
 type FreeYachtListResponse struct {
 	Status       string      `json:"status,omitempty"`
 	ErrorCode    int         `json:"errorCode,omitempty"`
